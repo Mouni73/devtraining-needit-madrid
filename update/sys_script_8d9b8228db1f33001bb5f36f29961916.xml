@@ -5,8 +5,8 @@
         <action_delete>false</action_delete>
         <action_insert>true</action_insert>
         <action_query>false</action_query>
-        <action_update>false</action_update>
-        <active>true</active>
+        <action_update>true</action_update>
+        <active>false</active>
         <add_message>false</add_message>
         <advanced>true</advanced>
         <change_fields>false</change_fields>
@@ -18,7 +18,7 @@
         <filter_condition/>
         <is_rest>false</is_rest>
         <message/>
-        <name>NeedIt When needed field date</name>
+        <name>NeedIt Debugging Practice</name>
         <order>100</order>
         <priority>100</priority>
         <rest_method/>
@@ -30,58 +30,56 @@
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
 
 	// Add your code here
-// Instantiate the NeedItUtils class.  Call the isDatePast method and pass 
-	// the u_when_needed value.
-	var niutils = new NeedItUtils();
+/*current.short_description = "This text set by the Debugging Business Rules business rule.";
+var myNum = current.state;
 	
-	var istodayu = niutils.isToday(current.u_when_needed);
-	// If the isDatePast method returns true, the date is in the past.
-	
-	if(istodayu == true){
-		gs.addErrorMessage("When needed date cannot be today.  Your request has not been saved to the database.");
-		current.setAbortAction(true);
-	}
-var today = rightnow.getLocalDate();
-	var istoday = whenNeeded.getLocalDate();
-	
-	// Compare today and istoday to see if they are the same day
-	if(today.compareTo(istoday) == 0){
-		gs.addErrorMessage("You cannot submit NeedIt requests for today.");
-		current.setAbortAction(true);
-	}
-	
-	 var sd= current.short_description;
+// The function in this try/catch is not defined
+try{
+	thisFunctionDoesNotExist();
+}
+catch(err){
+	gs.error("NeedIt App: a JavaScript runtime error occurred - " + err);
+}
 
+// This function is not defined and is not part of a try/catch
+   thisFunctionAlsoDoesNotExist();*/
 
-//	var myObj =g_form.getDisplayValue('short_description');
-	if(sd == 'do not insert'){
-		gs.addErrorMessage("Record Not Inserted.Because in Short Description u have Written do not insert.");
-		current.setAbortAction(true);
-	}
+// getNum and setNum demonstrate JavaScript Closure
+var x = 7;
 
-	var d=current.description;
-	if(d==''){
-		current.description=current.short_description;
-	}
-	
+function numFunc(){
+	var x = 10;
+	return{
+		getNum: function(){
+			return x;
+		},
+		setNum: function(newNum){
+			x = newNum;
+		}
+	};
+}
+var callFunc = numFunc();
+callFunc.getNum();
+callFunc.setNum(2);
+callFunc.getNum();
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2019-08-12 06:08:25</sys_created_on>
+        <sys_created_on>2019-08-13 03:39:06</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
-        <sys_id>303461d4db5333001bb5f36f2996195e</sys_id>
-        <sys_mod_count>21</sys_mod_count>
-        <sys_name>NeedIt When needed field date</sys_name>
+        <sys_id>8d9b8228db1f33001bb5f36f29961916</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>NeedIt Debugging Practice</sys_name>
         <sys_overrides/>
         <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
         <sys_policy/>
         <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
-        <sys_update_name>sys_script_303461d4db5333001bb5f36f2996195e</sys_update_name>
+        <sys_update_name>sys_script_8d9b8228db1f33001bb5f36f29961916</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-08-13 06:23:42</sys_updated_on>
+        <sys_updated_on>2019-08-13 04:41:27</sys_updated_on>
         <template/>
         <when>before</when>
     </sys_script>
-    <sys_translated_text action="delete_multiple" query="documentkey=303461d4db5333001bb5f36f2996195e"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=8d9b8228db1f33001bb5f36f29961916"/>
 </record_update>
